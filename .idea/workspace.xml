@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8eeb234-9232-4dbb-bb1c-93d5df8174c7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modelos/Exchange.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modelos/Resultado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Principal/Principal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/excepcion/ErrorEnResultado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conversor-de-Moneda--Challenge-ONE--Java--Backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Conversor-de-Moneda--Challenge-ONE--Java--Backend.iml" afterDir="false" />
-    </list>
+    <list default="true" id="d8eeb234-9232-4dbb-bb1c-93d5df8174c7" name="Changes" comment="Crea Gran Avance" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,21 +21,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "freedox10"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;freedox10&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/freedox10/Conversor-de-Moneda--Challenge-ONE--Java--Backend.git",
-    "accountId": "a00e8f4a-e7e2-478a-8ef6-6f0425fdcb90"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/freedox10/Conversor-de-Moneda--Challenge-ONE--Java--Backend.git&quot;,
+    &quot;accountId&quot;: &quot;a00e8f4a-e7e2-478a-8ef6-6f0425fdcb90&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-17/lib/src.zip!/java.base/java/lang/Double.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2fOFbypFDR6K6WI97XxaMvlCU8x" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -59,7 +54,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Alfre Do/IdeaProjects/primerprograma",
+    "last_opened_file_path": "C:/Users/Alfre Do/IdeaProjects/2047-screenmatch4-Aula0",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -74,6 +69,15 @@
       <option name="presentableId" value="Default" />
       <updated>1713664292989</updated>
     </task>
+    <task id="LOCAL-00001" summary="Crea Gran Avance">
+      <option name="closed" value="true" />
+      <created>1713687796819</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713687796819</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -86,5 +90,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Crea Gran Avance" />
+    <option name="LAST_COMMIT_MESSAGE" value="Crea Gran Avance" />
   </component>
 </project>

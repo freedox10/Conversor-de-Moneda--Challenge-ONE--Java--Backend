@@ -1,8 +1,8 @@
 package Principal;
 
+import Calculos.CalculadoraDeCambio;
 import Modelos.Exchange;
 import Modelos.Resultado;
-import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import excepcion.ErrorEnResultado;
@@ -19,7 +19,7 @@ import java.util.Scanner;
 public class Principal {
     public static void main(String[] args) throws IOException, InterruptedException {
         int cantidadResultados = 0;
-        double montoIntercambio;
+        //double montoIntercambio;
 
         Scanner lectura = new Scanner(System.in);
         List<String> resultados = new ArrayList<>();
@@ -48,12 +48,13 @@ public class Principal {
             }
 
             System.out.println("Escriba el Monto a CONVERTIR o Salir");
-            var montoBase = lectura.nextLine();
-            if (montoBase.equalsIgnoreCase("SALIR")){
+            var montoBaseString = lectura.nextLine();
+
+            if (montoBaseString.equalsIgnoreCase("SALIR")){
                 break;
             }
 
-            System.out.println("Escriba el código de INTERCAMBIO o Salir");
+            System.out.println("Escriba el código de DESTINO o Salir");
             var cambio = lectura.nextLine();
             if (cambio.equalsIgnoreCase("SALIR")){
                 break;
@@ -62,7 +63,7 @@ public class Principal {
 
             String direccion = "https://v6.exchangerate-api.com/v6/ca50e60632206d99d58846b2/pair/"+
                     base.toUpperCase()+"/"+cambio.toUpperCase();
-            System.out.println(direccion);
+            //System.out.println(direccion);
 
 
             try {
@@ -74,23 +75,33 @@ public class Principal {
                         .send(request, HttpResponse.BodyHandlers.ofString());
 
                 String json = response.body();
-                System.out.println("Json CRUDO: "+json);
+                //System.out.println("Json CRUDO: "+json);
 
-                if (json.contains("<html>")){
-                    throw new ErrorEnResultado("Datos incorrectos");
+                if (json.contains("<html>")||(json.contains("error"))){
+                    throw new ErrorEnResultado("_-= Datos ingresados incorrectos =-_");
                 }
-
-                cantidadResultados++;
-                System.out.println("Intercambios: " + cantidadResultados);
 
                 Exchange intercambio = gson.fromJson(json, Exchange.class);
                 //System.out.println(intercambio);
 
-                montoIntercambio = Double.parseDouble(montoBase) * intercambio.conversion_rate();
+                double montoBase = Double.parseDouble(montoBaseString);
+
+                Resultado paraCalcular = new Resultado(intercambio);
+                CalculadoraDeCambio calcular = new CalculadoraDeCambio();
+                calcular.calculaIntercambio(montoBase, paraCalcular);
+
+                //montoIntercambio = montoBase * intercambio.conversion_rate();
                 //System.out.println(montoIntercambio);
 
                 Resultado miresultado = new Resultado(intercambio);
-                String registro = cantidadResultados + ". " + montoBase + " " + miresultado + " " + montoIntercambio;
+                cantidadResultados++;
+                System.out.println("----------------------------------------------");
+                System.out.println("Tasa de Conversion: 1 " + miresultado + " " + intercambio.conversion_rate());
+                System.out.println("----------------------------------------------");
+                System.out.println("Intercambio Nro: " + cantidadResultados);
+
+                String registro = cantidadResultados + ". " + montoBase + " " + miresultado + " " + calcular.getMontoIntercambio();
+                //String registro = cantidadResultados + ". " + montoBase + " " + miresultado + " " + montoIntercambio;
                 System.out.println(registro);
 
                 resultados.add(registro);
@@ -98,13 +109,13 @@ public class Principal {
             }catch (ErrorEnResultado e){
                 System.out.println(e.getMessage());
             }catch (NumberFormatException e){
-                System.out.println("Ocurrió un error: ");
+                System.out.println("_-= No ingresó un Monto numérico válido =-_");
                 System.out.println(e.getMessage());
             }
 
 
         }
-        System.out.println(resultados);
+        System.out.println("Lista de Conversiones: " + resultados);
 
 
     }
