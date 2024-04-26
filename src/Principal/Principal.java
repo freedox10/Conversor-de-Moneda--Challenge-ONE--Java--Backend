@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import excepcion.ErrorEnResultado;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -27,20 +28,21 @@ public class Principal {
                 .setPrettyPrinting()
                 .create();
 
-        System.out.println("**********************************");
-        System.out.println("*      CONVERTIDOR DE MONEDA     *");
-        System.out.println("**********************************");
-        System.out.println("*           Códigos              *");
-        System.out.println("*  ARS <--Peso    Argentina      *");
-        System.out.println("*  BRL <--Real    Brazil         *");
-        System.out.println("*  CLP <--Peso    Chile          *");
-        System.out.println("*  PYG <--Guaraní Paraguay       *");
-        System.out.println("*  UYU <--Peso    Uruguay        *");
-        System.out.println("*  USD <--Dollar  Estados Unidos *");
-        System.out.println("*  SALIR <-- salir               *");
-        System.out.println("**********************************");
-
         while (true){
+            System.out.println("*******************************************");
+            System.out.println("*          CONVERSOR DE MONEDAS           *");
+            System.out.println("* --------------------------------------- *");
+            System.out.println("*       Códigos            País           *");
+            System.out.println("*    ARS   <-- Peso      Argentina        *");
+            System.out.println("*    BRL   <-- Real      Brazil           *");
+            System.out.println("*    CLP   <-- Peso      Chile            *");
+            System.out.println("*    PYG   <-- Guaraní   Paraguay         *");
+            System.out.println("*    UYU   <-- Peso      Uruguay          *");
+            System.out.println("*    USD   <-- Dollar    Estados Unidos   *");
+            System.out.println("*                                         *");
+            System.out.println("*    SALIR <-- Salir        AAF+ONE+Alura *");
+            System.out.println("*******************************************");
+
             System.out.println("Escriba el código de ORIGEN o Salir");
             var base = lectura.nextLine();
             if (base.equalsIgnoreCase("SALIR")){
@@ -49,7 +51,6 @@ public class Principal {
 
             System.out.println("Escriba el Monto a CONVERTIR o Salir");
             var montoBaseString = lectura.nextLine();
-
             if (montoBaseString.equalsIgnoreCase("SALIR")){
                 break;
             }
@@ -95,28 +96,43 @@ public class Principal {
 
                 Resultado miresultado = new Resultado(intercambio);
                 cantidadResultados++;
-                System.out.println("----------------------------------------------");
-                System.out.println("Tasa de Conversion: 1 " + miresultado + " " + intercambio.conversion_rate());
-                System.out.println("----------------------------------------------");
+                System.out.println("-------------------------------------------");
+                System.out.println("Tasa de Conversión: 1 " + miresultado + " " + intercambio.conversion_rate());
+                System.out.println("-------------------------------------------");
                 System.out.println("Intercambio Nro: " + cantidadResultados);
+                System.out.println("-------------------------------------------");
 
-                String registro = cantidadResultados + ". " + montoBase + " " + miresultado + " " + calcular.getMontoIntercambio();
+                String registro = cantidadResultados + ". " + montoBase + " " + miresultado + " " + String.format("%.2f", calcular.getMontoIntercambio());
                 //String registro = cantidadResultados + ". " + montoBase + " " + miresultado + " " + montoIntercambio;
                 System.out.println(registro);
+                System.out.println("-------------------------------------------");
 
                 resultados.add(registro);
 
             }catch (ErrorEnResultado e){
                 System.out.println(e.getMessage());
             }catch (NumberFormatException e){
-                System.out.println("_-= No ingresó un Monto numérico válido =-_");
-                System.out.println(e.getMessage());
+                System.out.println("_-= No ingresó un monto numérico válido =-_");
+                //System.out.println(e.getMessage());
+            }catch (ConnectException e){
+                System.out.println("_-= Error de conexion =-_");
             }
 
-
         }
-        System.out.println("Lista de Conversiones: " + resultados);
 
+        if (!(resultados == null || resultados.isEmpty())){
+            System.out.println("-------------------------------------------");
+            System.out.println("           Lista de Conversiones:");
+            for (int i = 0; i < resultados.size(); i++) {
+                System.out.println(resultados.get(i));
+            }
+            //System.out.println(resultados);
+            System.out.println("-------------------------------------------");
+        }
+
+        System.out.println("        Gracias por utilizar nuestro");
+        System.out.println("           CONVERSOR DE MONEDAS ;)");
+        System.out.println("_by__----- Aplicación Finalizada -----_AAF_");
 
     }
 }
